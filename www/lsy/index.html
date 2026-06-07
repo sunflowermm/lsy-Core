@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>李诗雅</title>
+  <link rel="stylesheet" href="/shared/ink.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="login-view" class="view">
+    <div class="ink-card login-card">
+      <div class="brand">
+        <span class="brand-mark">墨</span>
+        <h1>李诗雅</h1>
+        <p class="subtitle">简约 · 强大 · 墨水</p>
+      </div>
+      <form id="login-form">
+        <label>账号<input type="text" id="username" autocomplete="username" required /></label>
+        <label>密码<input type="password" id="password" autocomplete="current-password" required /></label>
+        <button type="submit" class="btn-primary">进入</button>
+      </form>
+      <p id="login-error" class="error hidden"></p>
+      <a href="/lsy-admin/" class="admin-link">管理控制台</a>
+    </div>
+  </div>
+
+  <div id="app-view" class="view hidden">
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <span class="brand-mini">李诗雅</span>
+        <button id="new-chat" class="btn-ghost" title="新对话">＋</button>
+      </div>
+      <div class="sidebar-section chats-section">
+        <div class="section-label">对话</div>
+        <div id="chat-list" class="chat-list ink-scroll"></div>
+      </div>
+      <div class="sidebar-section files-section">
+        <div class="section-label">
+          工作区
+          <span class="section-actions">
+            <button type="button" id="edit-agents" class="link-btn" title="编辑 AGENTS.md">规则</button>
+            <button type="button" id="view-audit" class="link-btn" title="工具审计">审计</button>
+            <label class="upload-btn" title="上传到 uploads/">
+              ↑
+              <input type="file" id="file-input" multiple hidden />
+            </label>
+          </span>
+        </div>
+        <div id="file-list" class="file-list ink-scroll"></div>
+      </div>
+      <div class="sidebar-foot">
+        <div id="usage-badge" class="usage-badge"></div>
+        <button id="logout" class="btn-ghost small">退出</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="main-head">
+        <button type="button" id="sidebar-toggle" class="btn-ghost icon mobile-only" title="菜单">☰</button>
+        <h2 id="chat-title">新对话</h2>
+        <div class="main-head-actions">
+          <button id="toggle-cmds" class="btn-ghost small" type="button">指令</button>
+          <button type="button" id="stop-btn" class="btn-ghost small hidden" title="停止生成">停止</button>
+        </div>
+      </header>
+      <div id="stream-status" class="stream-status hidden"></div>
+      <div id="cmd-panel" class="cmd-panel hidden">
+        <p class="cmd-hint">输入 <kbd>/</kbd> 可快速插入指令 · 图片 ≤8MB · 文件保存在 <code>uploads/</code></p>
+        <div id="cmd-grid" class="cmd-grid"></div>
+      </div>
+      <div id="messages" class="messages ink-scroll"></div>
+      <form id="composer" class="composer">
+        <textarea id="input" rows="1" placeholder="输入消息或 / 查看指令…"></textarea>
+        <button type="button" id="upload-trigger" class="btn-icon" title="上传文件">📎</button>
+        <button type="submit" class="btn-primary btn-send" id="send-btn">发送</button>
+      </form>
+    </main>
+  </div>
+
+  <dialog id="agents-dialog" class="ink-dialog">
+    <form method="dialog" class="dialog-inner">
+      <header class="dialog-head">
+        <h3>AGENTS.md</h3>
+        <p class="dialog-sub">本账号专属规则，保存后下次对话立即生效</p>
+      </header>
+      <textarea id="agents-editor" rows="16" spellcheck="false" placeholder="# 我的 Agent 规则…"></textarea>
+      <footer class="dialog-foot">
+        <button type="button" id="agents-cancel" class="btn-ghost">取消</button>
+        <button type="submit" id="agents-save" class="btn-primary">保存</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog id="audit-dialog" class="ink-dialog wide">
+    <div class="dialog-inner">
+      <header class="dialog-head">
+        <h3>工具审计</h3>
+        <p class="dialog-sub">最近 Agent 工具调用（audit.jsonl）</p>
+      </header>
+      <div id="audit-list" class="audit-list ink-scroll"></div>
+      <footer class="dialog-foot">
+        <button type="button" id="audit-close" class="btn-ghost">关闭</button>
+      </footer>
+    </div>
+  </dialog>
+
+  <dialog id="tool-dialog" class="ink-dialog">
+    <div class="dialog-inner">
+      <header class="dialog-head">
+        <h3>工具详情</h3>
+      </header>
+      <div id="tool-detail" class="tool-detail-wrap"></div>
+      <footer class="dialog-foot">
+        <button type="button" id="tool-close" class="btn-ghost">关闭</button>
+      </footer>
+    </div>
+  </dialog>
+
+  <script src="/shared/lsy-ui.js"></script>
+  <script src="/shared/lsy-markdown.js"></script>
+  <script src="/shared/lsy-audit.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>李诗雅 · 管理控制台</title>
+  <link rel="stylesheet" href="/shared/ink.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="header-brand">
+        <span class="brand-mark" aria-hidden="true">墨</span>
+        <div>
+          <h1 class="brand-serif">李诗雅 · 管理</h1>
+          <p class="header-sub hint">用户与用量 · 系统 API Key 鉴权</p>
+        </div>
+      </div>
+      <div class="header-links">
+        <a href="/lsy/" class="link-underline">对话</a>
+        <a href="/xrk/" class="link-underline">AGT 控制台</a>
+        <button type="button" id="logout-btn" class="btn-ghost hidden">退出</button>
+      </div>
+    </header>
+
+    <section class="auth-panel" id="auth-panel">
+      <div class="auth-card ink-card">
+        <h2>系统 API Key</h2>
+        <p class="hint">须填写与 AGT 控制台相同的系统 API Key（<code>X-API-Key</code>）。默认情况下本机访问也不可留空。</p>
+        <label>API Key<input type="password" id="api-key" autocomplete="off" placeholder="必填 · 见 server_config/api_key.json" required /></label>
+        <button type="button" id="auth-btn" class="btn-primary block">进入管理</button>
+        <p id="auth-error" class="error hidden"></p>
+      </div>
+    </section>
+
+    <section class="main-panel hidden" id="main-panel">
+      <nav class="tabs">
+        <button type="button" class="tab active" data-tab="overview">概览</button>
+        <button type="button" class="tab" data-tab="users">用户</button>
+      </nav>
+
+      <div class="tab-panel" id="tab-overview">
+        <div class="stat-grid" id="stat-grid"></div>
+        <div class="panel-block ink-card">
+          <h3>服务状态</h3>
+          <p class="hint">运行参数（LLM、默认账号、工具开关等）请在 <a href="/xrk/" class="link-underline">AGT 控制台</a> → CommonConfig → <strong>李诗雅</strong> 修改。</p>
+          <dl class="kv-list" id="service-kv"></dl>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" id="tab-users">
+        <div class="toolbar">
+          <h2>用户列表</h2>
+          <button id="add-btn" class="btn">新建账号</button>
+        </div>
+        <div class="table-wrap ink-card table-card">
+          <table id="user-table">
+            <thead>
+              <tr>
+                <th>用户名</th>
+                <th>配额</th>
+                <th>已用</th>
+                <th>剩余</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <dialog id="edit-dialog" class="ink-dialog">
+      <form id="edit-form" class="dialog-inner">
+        <header class="dialog-head">
+          <h3 id="dialog-title">新建账号</h3>
+        </header>
+        <label>用户名<input name="username" required pattern="[a-z0-9_-]{2,32}" />
+          <span class="field-hint" id="username-hint">创建后不可改名；需更换请新建账号</span>
+        </label>
+        <label>密码<input name="password" type="password" minlength="4" autocomplete="new-password" />
+          <span class="field-hint" id="password-hint">新建时必填；编辑时留空表示不修改</span>
+        </label>
+        <p id="form-error" class="error hidden"></p>
+        <label>调用次数上限<input name="quota" type="number" min="0" value="100" /><span class="field-hint">0 = 无限制</span></label>
+        <label class="checkbox"><input name="enabled" type="checkbox" checked /> 启用</label>
+        <footer class="dialog-foot">
+          <button type="button" id="cancel-btn" class="btn-ghost">取消</button>
+          <button type="submit" class="btn-primary">保存</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog id="detail-dialog" class="ink-dialog wide">
+      <div class="dialog-inner">
+        <header class="dialog-head detail-head">
+          <h3 id="detail-title">用户详情</h3>
+          <button type="button" id="detail-close" class="btn-ghost">关闭</button>
+        </header>
+        <div id="detail-body" class="detail-body ink-scroll"></div>
+      </div>
+    </dialog>
+  </div>
+  <script src="/shared/lsy-ui.js"></script>
+  <script src="/shared/lsy-audit.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

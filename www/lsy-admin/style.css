@@ -1,0 +1,226 @@
+/* 李诗雅管理台 — 布局与对话页共用 ink.css 设计系统 */
+body {
+  background-image: radial-gradient(ellipse at 20% 0%, rgba(0, 0, 0, 0.03) 0%, transparent 50%);
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.page { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  border: 2px solid var(--ink);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius);
+}
+
+header h1 { font-size: 1.25rem; line-height: 1.3; }
+.header-sub { margin-top: 0.25rem; }
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+  font-size: 0.82rem;
+}
+
+.auth-panel { max-width: 440px; margin: 2rem auto; }
+.auth-card { padding: 1.5rem; }
+.auth-card h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.auth-card label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  margin-bottom: 1rem;
+}
+.auth-card input {
+  display: block;
+  width: 100%;
+  margin-top: 0.3rem;
+  padding: 0.55rem 0.5rem;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+.auth-card input:focus { border-bottom-color: var(--ink); }
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+.tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  margin-bottom: -1px;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.tab.active { color: var(--ink); border-bottom-color: var(--ink); }
+.tab:hover { color: var(--ink-light); }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.stat-card {
+  padding: 0.85rem 1rem;
+  text-align: center;
+  background: var(--paper-elevated);
+}
+.stat-val { display: block; font-family: var(--font-serif); font-size: 1.5rem; }
+.stat-label { font-size: 0.7rem; color: var(--ink-faint); letter-spacing: 0.08em; }
+
+.panel-block { margin-bottom: 1.5rem; }
+.panel-block.ink-card {
+  padding: 1.15rem 1.25rem;
+  background: var(--paper-elevated);
+}
+.panel-block h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-bottom: 0.65rem;
+  color: var(--ink-light);
+}
+.panel-block .hint { margin-bottom: 0.85rem; }
+.panel-block .hint a { color: var(--ink-light); }
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.toolbar h2 {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink-light);
+}
+
+.table-card {
+  padding: 0.25rem 0.75rem;
+  background: var(--paper-elevated);
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.65rem 0.5rem; text-align: left; border-bottom: 1px solid var(--line); }
+th { font-size: 0.75rem; color: var(--ink-faint); font-weight: 500; }
+tr:last-child td { border-bottom: none; }
+
+.link-name {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.actions { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.actions button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.actions button:hover { background: rgba(0, 0, 0, 0.05); border-color: var(--ink); }
+.actions .danger { color: var(--error); border-color: var(--error); }
+.actions .danger:hover { background: rgba(139, 0, 0, 0.06); }
+
+.section-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  margin: 1.25rem 0 0.5rem;
+}
+
+dialog label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--ink-light);
+}
+dialog input[type="text"],
+dialog input[type="password"],
+dialog input[type="number"] {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.45rem;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+dialog input:focus { border-bottom-color: var(--ink); }
+.field-hint { display: block; font-size: 0.7rem; color: var(--ink-faint); margin-top: 0.2rem; }
+dialog .checkbox { display: flex; align-items: center; gap: 0.5rem; }
+
+.detail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+.detail-body { font-size: 0.85rem; max-height: 60vh; overflow-y: auto; }
+
+.badge-ok { color: var(--ok); }
+.badge-off { color: var(--ink-light); }
+
+@media (max-width: 640px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .kv-list { grid-template-columns: 1fr; gap: 0.2rem 0; }
+  .kv-list dt { margin-top: 0.5rem; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #user-table { min-width: 520px; }
+  .page { padding: 1.25rem 1rem 2rem; }
+  .header-brand .brand-mark { display: none; }
+}

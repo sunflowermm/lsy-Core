@@ -1,0 +1,19 @@
+# lsy-Core 配置（首次启动复制到 data/lsy/lsy.yaml）
+enabled: true
+defaultQuota: 100
+defaultUsername: "demo"
+# 留空则首次启动随机生成并写入日志；生产环境务必在首次部署后修改
+defaultPassword: ""
+tools:
+  allowGhClone: false
+
+search:
+  provider: auto
+
+admin:
+  allowLoopbackBypass: false
+
+# LLM：引用工厂端点 providers[].key（密钥在 data/server_bots/{port}/*_llm.yaml）
+llm:
+  provider: ""
+  maxToolRounds: 16
