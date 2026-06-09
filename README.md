@@ -118,8 +118,7 @@ lsy-Core/
 ├── default/        配置模板
 ├── http/           auth · chat · admin · workspace
 ├── lib/            用户 · 会话 · Agent · 工具
-├── skills/         Agent 规范（office-* 办公 + lsy 专用；同步见 scripts/sync-office-skills.mjs）
-├── scripts/        维护脚本（办公 skill 从仓库 skills/standard 同步）
+├── skills/         Agent 规范（office-* 办公 + lsy 专用）
 └── www/            lsy · lsy-admin · shared
 ```
 
