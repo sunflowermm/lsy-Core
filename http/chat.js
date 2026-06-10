@@ -4,7 +4,7 @@ import { checkQuota, consumeQuota, getUsageInfo } from '../lib/usage-limiter.js'
 import { listChats, getChat, deleteChat } from '../lib/chat-history.js';
 import { getLsyConfig } from '../commonconfig/lsy.js';
 import { runLsyChat } from '../lib/chat-runner.js';
-import { listAgentEndpoints } from '#utils/llm/agent-session.js';
+import { listAgentEndpoints } from '../lib/agent-session.js';
 
 export default {
   name: 'lsy-chat',
