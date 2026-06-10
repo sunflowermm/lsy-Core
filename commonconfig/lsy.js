@@ -69,19 +69,6 @@ export default class LsyConfig extends ConfigBase {
             default: false,
             component: 'Switch'
           },
-          'search.provider': {
-            type: 'string',
-            label: '网页搜索引擎',
-            description: 'web_search 工具使用的搜索引擎',
-            default: 'auto',
-            component: 'Select',
-            options: [
-              { label: '自动（国内优先）', value: 'auto' },
-              { label: 'Bing 中国', value: 'bing-cn' },
-              { label: '百度', value: 'baidu' },
-              { label: 'DuckDuckGo', value: 'duckduckgo' }
-            ]
-          },
           'admin.allowLoopbackBypass': {
             type: 'boolean',
             label: '管理台 127 免 API Key',
@@ -121,9 +108,6 @@ export default class LsyConfig extends ConfigBase {
     }
     if (data && typeof data.admin !== 'object') {
       data.admin = { allowLoopbackBypass: false };
-    }
-    if (data && typeof data.search !== 'object') {
-      data.search = { provider: 'auto' };
     }
     return data;
   }

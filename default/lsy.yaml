@@ -7,9 +7,6 @@ defaultPassword: ""
 tools:
   allowGhClone: false
 
-search:
-  provider: auto
-
 admin:
   allowLoopbackBypass: false
 
