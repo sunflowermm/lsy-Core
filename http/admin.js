@@ -34,11 +34,11 @@ export default {
       if (!username || password == null || String(password).trim() === '') {
         return HttpResponse.validationError(res, '用户名和密码必填');
       }
-      const cfg = await getLsyConfig();
+      const runtimeConfig = await getLsyConfig();
       const user = await getLsyUserStore().upsertUser({
         username,
         password,
-        quota: quota ?? cfg.defaultQuota,
+        quota: quota ?? runtimeConfig.defaultQuota,
         enabled: enabled !== false
       });
       HttpResponse.success(res, { user }, '账号已保存');

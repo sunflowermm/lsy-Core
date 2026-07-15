@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 import multer from 'multer';
-import cfg from '#infrastructure/config/config.js';
+import runtimeConfig from '#infrastructure/config/config.js';
 import { HttpResponse } from '#utils/http-utils.js';
 import { requireUser } from './auth.js';
 import {
@@ -35,7 +35,7 @@ function createUserUploader(username) {
 
 async function handleUpload(req, res, username) {
   await ensureUserWorkspace(username);
-  const maxFileSize = cfg?.server?.limits?.fileSize || '50mb';
+  const maxFileSize = runtimeConfig?.server?.limits?.fileSize || '50mb';
   const upload = (req.createMultipartUploader || (() => req.multipartUpload))({
     storage: createUserUploader(username),
     fileSize: maxFileSize,

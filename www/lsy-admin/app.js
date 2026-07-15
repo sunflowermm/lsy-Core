@@ -91,17 +91,17 @@ function renderKv(el, rows) {
 async function loadOverview() {
   const { stats } = await adminFetch('/api/lsy/admin/stats');
   renderStats(stats);
-  const cfg = stats?.service || {};
+  const runtimeConfig = stats?.service || {};
   renderKv(document.getElementById('service-kv'), [
-    ['服务', cfg.enabled ? '已启用' : '已停用'],
-    ['LLM 端点', cfg.llm?.provider || '—'],
-    ['模型', cfg.llm?.model || '—'],
-    ['LLM 就绪', cfg.llm?.configured ? '是' : '否'],
-    ['默认配额', cfg.defaultQuota ?? '—'],
-    ['默认账号', cfg.defaultUsername || '—'],
-    ['搜索引擎', cfg.search?.provider || '—'],
-    ['gh_clone', cfg.tools?.allowGhClone ? '已开启' : '已关闭'],
-    ['127 免 Key', cfg.admin?.allowLoopbackBypass ? '已开启' : '已关闭']
+    ['服务', runtimeConfig.enabled ? '已启用' : '已停用'],
+    ['LLM 端点', runtimeConfig.llm?.provider || '—'],
+    ['模型', runtimeConfig.llm?.model || '—'],
+    ['LLM 就绪', runtimeConfig.llm?.configured ? '是' : '否'],
+    ['默认配额', runtimeConfig.defaultQuota ?? '—'],
+    ['默认账号', runtimeConfig.defaultUsername || '—'],
+    ['搜索引擎', runtimeConfig.search?.provider || '—'],
+    ['gh_clone', runtimeConfig.tools?.allowGhClone ? '已开启' : '已关闭'],
+    ['127 免 Key', runtimeConfig.admin?.allowLoopbackBypass ? '已开启' : '已关闭']
   ]);
 }
 
