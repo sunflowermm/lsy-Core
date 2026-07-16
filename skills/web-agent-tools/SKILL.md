@@ -15,7 +15,7 @@ description: 网页 Agent 安全工具白名单与路径边界
 | `grep` | 搜索 | 同 read |
 | `list_files` | 列目录 | 不含 `chats/` |
 | `convert_document` | doc/pdf → txt/md | 输出到可写目录 |
-| `web_search` | 网页搜索（同 AGT `web.web_search`） | 配置 `aistream.yaml` → `crawl.webSearch` |
+| `web_search` | 网页搜索（同 AGT `web.web_search`） | 配置 `ai-workflow.yaml` → `crawl.webSearch` |
 | `web_fetch` | 抓取 URL | 同上 |
 | `run` | shell | 白名单：pandoc/npm/node/python/git status 等 |
 | `gh_clone` | 克隆仓库 | **默认关闭**，需 `lsy.yaml` → `tools.allowGhClone: true` |

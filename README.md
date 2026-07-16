@@ -74,7 +74,7 @@ cd .. && pnpm install && node app
 | `tools.allowGhClone` | GitHub 克隆到 `project/` |
 | `admin.allowLoopbackBypass` | 127 免 Key（仅开发） |
 
-`web_search` / `web_fetch` 配置在 **`aistream.yaml` → `crawl.*`**（与 AGT 本体共用，见 `core/system-Core/commonconfig/system.js`）。
+`web_search` / `web_fetch` 配置在 **`ai-workflow.yaml` → `crawl.*`**（与 AGT 本体共用，见 `core/system-Core/commonconfig/system.js`）。
 
 用户数据落在宿主 **`data/lsy/`**（配置、账号、各用户工作区），勿纳入本仓库。
 
@@ -82,7 +82,7 @@ cd .. && pnpm install && node app
 
 ## 架构
 
-不读 `aistream` 默认 LLM Provider，不注入其它 Core 的 MCP；`web_search` / `web_fetch` 与 AGT 共用 `aistream.crawl`。
+不读 `ai-workflow` 默认 LLM Provider，不注入其它 Core 的 MCP；`web_search` / `web_fetch` 与 AGT 共用 `ai-workflow.crawl`。
 
 ```mermaid
 flowchart TB
