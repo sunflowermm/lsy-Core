@@ -46,7 +46,7 @@ cd .. && pnpm install && node app
 |:---:|:---|:---|
 | 对话 | `/lsy/` | 用户 Bearer Token |
 | 管理 | `/lsy-admin/` | 系统 `X-API-Key` |
-| 样式 | `/shared/ink.css` | 静态 |
+| 样式 | `/lsy-shared/ink.css` | 静态 |
 
 </div>
 
